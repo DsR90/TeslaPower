@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TeslaPower.Models.Design>
+<div class="Formlayout">
+    <h2>Design Details</h2>
+    <div style="background-color:teal; color:white;">
+        <table align="center" border="1">
+            <tr>
+                <th>Di No</th>
+                <th>Rating</th>
+                <th>Customer Name</th>
+                <th>CRGO/Set (kg)</th>
+                <th>Conductor</th>
+                <th>Tap Changer</th>
+                <th>Radiator</th>
+                <th> <center>Acton</center></th>
+            </tr>
+            @foreach (var design in Model)
+            {
+                <tr>
+                    <td>  @design.DiNo</td>
+                    <td>  @design.Rating</td>
+                    <td>  @design.Cname</td>
+                    <td>  @design.Crgo</td>
+                    <td>  @design.Conductor</td>
+                    <td>  @design.TapChanger</td>
+                    <td>  @design.RadiatorType</td>
+                    <td>
+                        @Html.ImageActionLink("View", "ViewDesignByID", "Design", new { id = design.DiNo }, null, "~/Buttons/ViewButton.jpg")
+                        @Html.ImageActionLink("Delete", "DeleteDesign", "Design", new { DiNo = design.DiNo }, null, "~/Buttons/DeleteButton1.jpg")
+                    </td>
+                </tr>                   
+            }
+            <tr>
+                <td colspan="8">
+                    <center>
+                        @Html.ImageActionLink("Add new Design", "AddDesign", "Design", null, null, "~/Buttons/Add New Desing.jpg")
+                    </center>                 
+                </td>
+            </tr>
+        </table>
+        <div style="background-color:teal; margin-top:5px; color:yellow; text-align:center;">
+            <label id="msglbl"> This Form is Not Ready</label>
+        </div>
+    </div>
+</div>
+
+
+

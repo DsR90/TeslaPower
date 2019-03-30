@@ -1,0 +1,104 @@
+﻿@model  TeslaPower.Models.OrderItems
+@using (Html.BeginForm("AddItem", "Order"))
+{
+    <div class="Formlayout">
+        <h2>Order Details</h2>
+        <div style="background-color:teal; color:white;">
+            <table align="center" border="1">
+                <tr>
+                    <th>Order To</th>
+                    <th>Po No</th>
+                    <th>po Date</th>
+                    <th>Customer Name</th>
+                    <th>Region</th>
+                    <th>inspection</th>
+                    <th>Delivery Confirmation</th>
+                    <th>Delivery Date</th>
+                    <th><center>Remark</center></th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(O => O.order.orderTo)</td>
+                    <td>@Html.DisplayFor(O => O.order.poNo)</td>
+                    <td>@Html.DisplayFor(O => O.order.poDate)</td>
+                    <td>@Html.DisplayFor(O => O.order.custName)</td>
+                    <td>@Html.DisplayFor(O => O.order.region)</td>
+                    <td>@Html.DisplayFor(O => O.order.inspection)</td>
+                    <td><center>@Html.DisplayFor(O => O.order.delConfirm)</center></td>
+                    <td>@Html.DisplayFor(O => O.order.delDate)</td>
+                    <td>@Html.DisplayFor(O => O.order.remark)</td>
+                </tr>
+            </table>
+            <div>
+                <h2>New Item Details</h2>
+                <table align="center" border="1">
+                    <tr>
+                        <td colspan="3">
+                            @Html.ValidationSummary(false, "", new { @class = "alert-danger", style = "color:red" }, "h4")
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Po No</th>
+                        <td>@Html.TextBoxFor(I => I.order.poNo, new { @readonly="true"})</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.order.poNo, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>KVA</th>
+                        <td>@Html.EditorFor(I => I.items[0].kva)</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].kva, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>KV</th>
+                        <td>@Html.EditorFor(I => I.items[0].kv)</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].kv, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>@Html.EditorFor(I => I.items[0].type)</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].type, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>Quantity</th>
+                        <td>@Html.EditorFor(I => I.items[0].qty)</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].qty, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>Start Code No</th>
+                        <td>@Html.EditorFor(I => I.items[0].scn)</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].scn, null, new { @class = "errorSpans" }) </td>
+                    </tr>                   
+                    <tr>
+                        <th> Winding</th>
+                        <td>@Html.DropDownListFor(I => I.items[0].winding, new SelectList(Enum.GetValues(typeof(Winding))), "Select", new { style = "width:172px" })</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].winding, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>Tap Changer</th>
+                        <td>@Html.DropDownListFor(I => I.items[0].tapchanger, new SelectList(Enum.GetValues(typeof(TapChanger))), "Select", new { style = "width:172px" })</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].tapchanger, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <th>Unit price</th>
+                        <td>@Html.EditorFor(I => I.items[0].up)</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].up, null, new { @class = "errorSpans" }) </td>
+                    </tr>                   
+                    <tr>
+                        <th>Di Ref.</th>
+                        <td>@Html.DropDownListFor(I => I.items[0].DiNo, ViewBag.DiNo as IEnumerable<SelectListItem>, "", new { style="width:172px"})</td>
+                        <td class="EmptyLbl"> @Html.ValidationMessageFor(I => I.items[0].DiNo, null, new { @class = "errorSpans" }) </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <center>
+                                <input type="submit" id="btnSubmit" value="Add" /> &nbsp &nbsp
+                                <input type="reset" id="btnReset" value="Reset" />
+                            </center>  
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="background-color:teal; margin-top:5px; color:yellow; text-align:center;">
+                <label id="msglbl"> This Form is Not Ready</label>
+            </div>
+        </div>
+    </div>
+}

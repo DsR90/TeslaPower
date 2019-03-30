@@ -1,0 +1,84 @@
+﻿@model TeslaPower.Models.Order
+<style>
+</style>
+@using (Html.BeginForm("NewOrder", "Order"))
+{
+    <div class="Formlayout">
+        <h2 style="text-shadow:1px 2px 6px white;letter-spacing:2.0px;">Add New Order</h2>
+        <div style="background-color:teal; padding:10px; color:white;">
+            <div style="font-size:120%;font-weight:200">
+                <table align="center">
+                    <tr>
+                        <td colspan="6">
+                            @Html.ValidationSummary(false, "", new { @class="alert-danger", style="color:red"}, "h4")
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td class="lbl" width="130"> Order To </td>
+                        <td> 
+                            @Html.TextBoxFor(O => O.orderTo, new { placeholder = "TTL / TP", style = "width:70px" } )
+                            @Html.ValidationMessageFor(O => O.orderTo, null, new { @class = "errorSpans" })
+                        </td> 
+                        <td class="lbl" width="50"> Po No </td>
+                        <td>
+                            @Html.TextBoxFor(O => O.poNo, new { placeholder = "Po No", style = "width:100px" })
+                            @Html.ValidationMessageFor(O => O.poNo, null, new { @class = "errorSpans" })
+                        </td>
+                        <td class="lbl" width="100"> Po No </td>
+                        <td width="100">
+                            @Html.EditorFor(O => O.poDate)
+                            @Html.ValidationMessageFor(O => O.poDate, null, new { @class = "errorSpans" })
+                        </td>                
+                    </tr>                  
+                    <tr>
+                        <td class="lbl"> Customer Name</td>
+                        <td colspan="5">
+                             @Html.TextBoxFor(O => O.custName, new { style = "width:543px" })
+                             @Html.ValidationMessageFor(O => O.custName, null, new { @class = "errorSpans" })
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td class="lbl"> Region</td>
+                        <td colspan="2"> 
+                              @Html.DropDownListFor(O => O.region, new SelectList(Enum.GetValues(typeof(Region))), "Select", new { style = "width:130px" })
+                              @Html.ValidationMessageFor(O => O.region, null, new { @class = "errorSpans" })
+                        </td>
+                        <td class="lbl"> Inspection</td>
+                        <td >
+                            @Html.DropDownListFor(O => O.inspection, new SelectList(Enum.GetValues(typeof(Inspection))), "Select", new { style = "width:145px" })
+                            @Html.ValidationMessageFor(O => O.inspection, null, new { @class = "errorSpans" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lbl"> Delivery Confirmation</td>
+                        <td colspan="2">
+                            @Html.DropDownListFor(O => O.delConfirm, new SelectList(Enum.GetValues(typeof(DelConfirm))), "Select", new { style = "width:130px" })                            
+                            @Html.ValidationMessageFor(O => O.delConfirm, null, new { @class = "errorSpans" })
+                        </td>
+                        <td class="lbl"> Delivery Date</td>
+                        <td>
+                            @Html.EditorFor(O => O.delDate)
+                            @Html.ValidationMessageFor(O => O.delDate, null, new { @class = "errorSpans" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lbl"> Remark</td>
+                        <td colspan="5">
+                            @Html.TextBoxFor(O => O.remark, new {style = "width:543px" })
+                            @Html.ValidationMessageFor(O => O.remark, null, new { @class = "errorSpans" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <center>
+                                <input type="submit" id="btnSubmit" value="Add" /> &nbsp &nbsp
+                                <input type="reset" id="btnReset" value="Reset" />
+                            </center>                           
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+}

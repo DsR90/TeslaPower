@@ -1,0 +1,103 @@
+﻿@using TeslaPower
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" Images="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Tesla Transformer Ltd.</title>
+    <link href="~/Content/Styles.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/ItemScripts.js"></script>
+    <script src="~/Scripts/MyScripts.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body style="background-color:rgba(0,64, 64, 1);">
+    <div id="Menu" style="background-color:navy;height:103px;">
+        <img src="~/Images/Tesla1.jpg" />
+        <ul>
+            <li>@Html.ImageActionLink("Home", "index", "Home", null, null, "~/Images/Home.jpg")</li>
+            <li>
+                @Html.ImageActionLink("Order", "index", "Order", null, null, "~/Images/Order.jpg")
+            <ul>
+                <li>@Html.ImageActionLink("View Order", "ViewOrder", "Order", null, null, "~/Images/View Order.jpg")</li>
+                <li>@Html.ImageActionLink("New Order", "NewOrder", "Order", null, null, "~/Images/New Order.jpg")</li>                
+            </ul>
+        </li>
+        <li>
+            @Html.ImageActionLink("Design", "index", "Design", null, null, "~/Images/Design.jpg")
+        <ul>
+            <li>@Html.ImageActionLink("View Design", "ViewDesign", "Design", null, null, "~/Images/View Design.jpg")</li>
+            <li>@Html.ImageActionLink("New Design", "AddDesign", "Design", null, null, "~/Images/New Design.jpg")</li>           
+        </ul>
+    </li>
+    <li>
+        @Html.ImageActionLink("Material", null, null, null, null, "~/Images/Material.jpg")
+    <ul>
+        <li>
+            @Html.ImageActionLink("MRP", "index", "MatrialRequirmentPlan", null, null, "~/Images/MRP.jpg")
+            <ul>
+                <li>@Html.ImageActionLink("View MRP", "Vewindex", "Order", null, null, "~/Images/View MRP.jpg")</li>
+                <li>@Html.ImageActionLink("New MRP", "NewMRP", "Order", null, null, "~/Images/New MRP.jpg")</li>                
+            </ul>
+        </li>
+        <li>
+            <img src="~/Images/Receiving.jpg" />
+            <ul>
+                <li><a href="#"><img src="~/Images/View MR.jpg" />   </a> </li>
+                <li><a href="#"><img src="~/Images/New MR.jpg" />   </a> </li>
+                <li><a href="#"><img src="~/Images/Update MR.jpg" />   </a> </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<li>
+    <img src="~/Images/Production.jpg" />
+    <ul>
+        <li><a href="#"><img src="~/Images/View Plans.jpg" />    </a>  </li>
+        <li><a href="#"><img src="~/Images/New Plans.jpg" />     </a>  </li>
+        <li><a href="#"><img src="~/Images/Update plans.jpg" />  </a>  </li>
+        <li><a href="#"><img src="~/Images/Remove Plans.jpg" />  </a>  </li>
+    </ul>
+</li>
+<li>
+    <img src="~/Images/Stage.jpg" />
+    <ul>
+        <li><a href="#"><img src="~/Images/CA.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/CAA.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/LV.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/HV.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/Tanking.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/Ovening.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/Testing.jpg" /> </a></li>
+        <li><a href="#"><img src="~/Images/Dispatch.jpg" /> </a></li>
+    </ul>
+</li>
+<li>
+    <img src="~/Images/Reports.jpg" />
+    <ul>
+        <li><a href="#"><img src="~/Images/Order Status.jpg" /> </a> </li>
+        <li><a href="#"><img src="~/Images/Material status.jpg" /> </a> </li>
+    </ul>
+</li>
+<li><a href="#"><img src="~/Images/Contact.jpg" /> </a>  </li>
+<li><a href="#"><img src="~/Images/About Us.jpg" /> </a>  </li>
+</ul>&nbsp &nbsp
+<input type="button" id="btnSignIn" value="Sign Up" style="border:none;color:tan;font-size:large;background-color:teal; margin-top:10px;" /> &nbsp &nbsp
+<input type="button" id="btnSignUp" value="Sign In" style="border:none;color:tan;font-size:large;background-color:teal; margin-top:10px;" />
+
+</div>
+
+<div class="container body-Images">
+    @RenderBody()
+    <hr />
+    <footer style="text-align:center">
+        <p>&copy; Tesla Transformer Limited  Developed by Dileep Singh</p>
+    </footer>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

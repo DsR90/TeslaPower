@@ -1,0 +1,28 @@
+﻿#Menu *{margin:0px;  padding:0px;}
+#Menu ul { list-style:none}
+#Menu ul li{ width:129px; height:40px; line-height:12px;
+		float:left; margin:0px; position:relative}
+#Menu ul li:hover{ background-color:yellow;}
+#Menu ul ul{display:none; position:absolute}
+#Menu ul li:hover >ul{ display:block;}
+#Menu ul li:hover >ul li{ text-align:left; }
+#Menu ul ul ul{margin-left:129px;top:0px}
+.Formlayout{ color:teal;}
+.formlayout td{margin:5px;padding:5px}
+#SubMenu{ width:130px;background-color:teal;}
+footer{color:yellow; font-size:small}
+form{background-color:lightsteelblue;}
+h2{color:white; text-decoration:underline;text-align:center; text-shadow:1px 2px 6px blue;letter-spacing:2.0px;background-color:lightsteelblue;}
+body{background-color:teal}
+.lbl{background-color:LightSeaGreen; color:white; text-align:left; font-size:small; font-family:'Times New Roman'}
+.group1{ background-color:teal; margin-top:5px; color:white; padding:5px;}
+form{ padding:5px;}
+.group2 td{width:185px;}
+.lblGroup1{ text-align:center;}
+th{background-color:darkblue; color:white; text-align:left; font-size:small; font-family:'Times New Roman'}
+td{background-color:white; color:navy; text-align:left; padding-right:5px; font-size:small; font-family:'Times New Roman'; }
+.errorSpans {display: none;}
+.EmptyLbl{background-color:teal}
+.Formtable{ background-color:teal; padding:0px; margin:5px}
+input{text-align:right}
+.disable-input{background-color:gainsboro;}

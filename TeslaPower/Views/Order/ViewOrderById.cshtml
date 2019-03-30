@@ -1,0 +1,59 @@
+﻿@model TeslaPower.Models.Order
+
+@{
+    ViewBag.Title = "Order Details";
+}
+<div class="Formlayout">
+    <h2>Po Details</h2>
+    <div style="background-color:teal; padding:10px; color:white;">
+        @using (Html.BeginForm("ViewOrderById", "Order"))
+        {
+            <div align="center">
+                @Html.LabelFor(O => O.poNo)
+                @Html.DropDownList("poNo", null, "Select")
+                <input type="submit" value=" View" />
+            </div>
+        }
+        <table align="center" border="2" cellpadding="5" cellspacing="5">
+            <tr>
+                <td class="lbl">Order To        </td>
+                <td>@Model.orderTo</td>
+                <td class="lbl">Po No           </td>
+                <td>@Model.poNo</td>
+                <td class="lbl">Purchage Date</td>
+                <td>@Model.poDate</td>
+            </tr>
+            <tr>
+                <td class="lbl">Customer Name   </td>
+                <td colspan="5">@Model.custName</td>
+            </tr>
+            <tr>
+                <td class="lbl">Region          </td>
+                <td colspan="2">@Model.region</td>
+                <td class="lbl">inspection      </td>
+                <td colspan="2">@Model.inspection</td>
+            </tr>
+            <tr>
+                <td class="lbl">Delivery Confirmation  </td>
+                <td colspan="2">@Model.delConfirm</td>
+                <td class="lbl">Delivery Date          </td>
+                <td colspan="2">@Model.delDate</td>
+            </tr>
+            <tr>
+                <td class="lbl">Remark                 </td>
+                <td colspan="5">@Model.remark</td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <div align="center">
+                        @Html.ImageActionLink("View", "ViewItem", "Order", new { poNo = Model.poNo }, null, "~/Images/View Item.jpg")
+                        @Html.ImageActionLink("Edit", "EditOrder", "Order", new { id = Model.poNo }, null, "~/Images/Edit.jpg")
+                        @Html.ImageActionLink("Add Item", "AddItem", "Order", new { poNo = Model.poNo }, null, "~/Images/Add Item.jpg")
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+﻿@model TeslaPower.Models.Order
+<div class="Formlayout">
+    <h2>Po Details</h2>
+    <div style="background-color:teal; padding:10px; color:white;">
+        @using (Html.BeginForm("ViewOrder", "Order"))
+        {
+            <div align="center">
+                @Html.LabelFor(O => O.poNo)
+                @Html.DropDownList("poNo", null, "Select", new { id = "ddList" })
+                <input type="submit" value="View">
+            </div>
+        }
+    </div>
+</div>

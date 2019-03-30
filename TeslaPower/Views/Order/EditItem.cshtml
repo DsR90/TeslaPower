@@ -1,0 +1,57 @@
+﻿@model TeslaPower.Models.Item
+@{
+    var ecn = Model.qty + Model.scn;
+   var Tp = Model.qty * Model.up;
+ }
+<div class="Formlayout">
+    <h2>Po Details</h2>
+    <div style="background-color:teal; color:white;">
+        @using (Html.BeginForm())
+        {
+            <table align="center" border="1">
+                <tr>
+                       <th colspan="6">
+                           <center> 
+                               Item NO : @Html.TextBoxFor(I => I.ItemId, new { @readonly = "true" })
+                               Po NO  : @Html.TextBoxFor(I => I.poNo, new { @readonly = "true" })                           
+                           </center>
+                     </th>
+               </tr>
+                <tr>
+                    <td class="lbl">KVA :      </td>
+                    <td>@Html.TextBoxFor(I=>I.kva, new { @readonly = "true" })</td>
+                    <td class="lbl">KV : </td>
+                    <td>@Html.TextBoxFor(I => I.kv, new { @readonly = "true" })</td>
+                    <td class="lbl">Type</td>
+                    <td>@Html.TextBoxFor(I => I.type, new { @readonly = "true" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Quantity : </td>
+                    <td >@Html.TextBoxFor(I=>I.qty, new { @readonly = "true" })</td>                
+                    <td class="lbl">Code No from : </td>
+                    <td>@Html.TextBoxFor(I => I.scn, new { @readonly = "true" })</td>
+                    <td class="lbl">Code No To : </td>
+                    <td>@ecn</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Winding  </td>
+                    <td >@Html.TextBoxFor(I => I.winding, new { @readonly = "true" })</td>
+                    <td class="lbl">Tap changer  </td>
+                    <td >@Html.TextBoxFor(I => I.tapchanger, new { @readonly = "true" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Unit Price : </td>
+                    <td>@Html.TextBoxFor(I => I.up, new { @readonly = "true" })</td>
+                    <td class="lbl">Total Price : </td>
+                    <td>@Tp</td>
+                    <td class="lbl">DI Ref : </td>
+                    <td>@Html.DropDownListFor(I => I.DiNo, ViewBag.DiNo as IEnumerable<SelectListItem>, "", new { style = "width:172px" })</td>
+                </tr>
+                <tr></tr>
+            </table>
+            <div align="center">
+                <input type="submit" value="Save" />
+            </div>
+        }
+    </div>
+</div>

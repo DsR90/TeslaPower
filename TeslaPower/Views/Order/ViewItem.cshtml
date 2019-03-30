@@ -1,0 +1,89 @@
+﻿@model  TeslaPower.Models.OrderItems
+@using (Html.BeginForm("ViewItem", "Order"))
+{
+    <div class="Formlayout">
+        <h2> Po No:<span style="color:darkblue">@Model.order.poNo </span> | Details</h2>
+        <div style="background-color:teal; color:white;">
+            <table align="center" border="1">
+                <tr>
+                    <th>Order To</th>
+                    <th>Po No</th>
+                    <th>po Date</th>
+                    <th>Customer Name</th>
+                    <th>Region</th>
+                    <th>inspection</th>
+                    <th>Delivery Confirmation</th>
+                    <th>Delivery Date</th>
+                    <th><center>Remark</center></th>                  
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(O => O.order.orderTo)</td>
+                    <td>@Html.DisplayFor(O => O.order.poNo)</td>
+                    <td>@Html.DisplayFor(O => O.order.poDate)</td>
+                    <td>@Html.DisplayFor(O => O.order.custName)</td>
+                    <td>@Html.DisplayFor(O => O.order.region)</td>
+                    <td>@Html.DisplayFor(O => O.order.inspection)</td>
+                    <td><center>@Html.DisplayFor(O => O.order.delConfirm)</center></td>
+                    <td>@Html.DisplayFor(O => O.order.delDate)</td>
+                    <td>@Html.DisplayFor(O => O.order.remark)</td>
+                   
+                </tr>
+            </table>
+            <div>
+                <h2>Items</h2>
+                <table align="center" border="1">
+                    <tr>
+                        <th>KVA</th>
+                        <th>KV</th>
+                        <th>Quantity</th>
+                        <th>Type</th>
+                        <th>Start Code No</th>
+                        <th>End Code No</th>
+                        <th> Winding</th>
+                        <th>Tap Changer Date</th>
+                        <th>Unit price</th>
+                        <th>Total price</th>
+                        <th>Di Ref.</th>
+                        <th><center> Action</center></th>                        
+                    </tr>
+                    @foreach (var item in Model.items)
+                    {
+                        <tr>
+                            <td>@item.kva</td>
+                            <td>@item.kv</td>
+                            <td>@item.qty</td>
+                            <td>@item.type</td>
+                            <td>@item.scn</td>
+                            <td>
+                                @{ ViewBag.Ecn = item.qty+item.scn;}
+                                @ViewBag.Ecn
+                            </td>
+                            <td>@item.winding</td>
+                            <td>@item.tapchanger</td>
+                            <td>@item.up</td>
+                            <td>
+                                @{ ViewBag.Tp = item.qty * item.up;}
+                                @ViewBag.Tp
+                            </td>
+                            <td>@item.DiNo</td>
+                            <td>
+                                @Html.ImageActionLink("Edit", "EditItem", "Order", new { id=item.ItemId}, null, "~/Buttons/EditButton.jpg")
+                                @Html.ImageActionLink("Delete", "deleteItem", "Order", new { id = item.ItemId }, null, "~/Buttons/DeleteButton1.jpg")
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="12">                            
+                            <center>
+                                @Html.ImageActionLink("Add New Item", "AddItem", "Order", new { poNo = Model.order.poNo }, null, "~/Images/Add New Item.jpg")
+                            </center>                            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="background-color:teal; margin-top:5px; color:yellow; text-align:center;">
+                <label id="msglbl"> This Form is Not Ready</label>
+            </div>
+        </div>
+    </div>
+}

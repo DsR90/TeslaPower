@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TeslaPower.Models.Order>
+
+
+
+@{
+    ViewBag.Title = "Order";
+}
+@using (Html.BeginForm("NewOrder", "Order"))
+{
+    <div class="Formlayout">
+        <h2>Order Details</h2>
+        <div style="background-color:teal; color:white;">
+            <table align="center" border="1">
+                <tr>
+                    <th>Order To</th>
+                    <th>Po No</th>
+                    <th>po Date</th>
+                    <th>Customer Name</th>
+                    <th>Region</th>
+                    <th>inspection</th>
+                    <th>Delivery Confirmation</th>
+                    <th>Delivery Date</th>
+                    <th>Remark</th>
+                    <th align="center">Acton</th>
+                </tr>
+                @foreach (var o in Model)
+                {
+                    <tr>
+                        <td>  @o.orderTo</td>
+                        <td>  @o.poNo</td>
+                        <td>  @o.poDate</td>
+                        <td>  @o.custName</td>
+                        <td>  @o.region</td>
+                        <td>  @o.inspection</td>
+                        <td>  @o.delConfirm</td>
+                        <td>  @o.delDate</td>
+                        <td>  @o.remark</td>
+                        <td>
+                            @Html.ImageActionLink("View", "ViewItem", "Order", new { poNo = o.poNo }, null, "~/Buttons/ViewButton.jpg")                                                 
+                            @Html.ImageActionLink("Edit", "EditOrder", "Order", new { id = o.poNo }, null, "~/Buttons/EditButton.jpg")
+                            @Html.ImageActionLink("Add Item", "AddItem", "Order", new { id=o.poNo, poNo = o.poNo }, null, "~/Buttons/AddButton.jpg")
+                        </td>
+
+                    </tr>
+                }
+            </table>
+            <div style="background-color:teal; margin-top:5px; color:yellow; text-align:center;">
+                <label id="msglbl"> This Form is Not Ready</label>
+            </div>
+        </div>
+    </div>
+}

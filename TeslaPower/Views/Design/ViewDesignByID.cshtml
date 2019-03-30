@@ -1,0 +1,125 @@
+﻿@model TeslaPower.Models.Design
+<div class="Formlayout">
+    <h2> DiNo :<span style="color:darkblue">@Model.DiNo </span> | Details</h2>
+        <div style="background-color:teal; margin:20px 0px; color:white;">
+            <div style="font-size:130%;font-weight:200">
+                @using (Html.BeginForm("ViewDesign", "Design"))
+                {
+                    <div align="center">
+                        @Html.LabelFor(d => d.DiNo)
+                        @Html.DropDownList("DiNo", null, "Select", new { id = "ddList" })
+                        <input type="submit" value="View">
+                    </div>
+                }
+                <table align="center">                    
+                    <tr>                    
+                        <td class="lbl"> Di No </td>
+                        <td class="lbl"> Rating </td>
+                        <td class="lbl"> Type</td>
+                        <td class="lbl"> Customer Name </td>
+                        <td class="lbl"> Quantity</td>
+                        <td class="lbl"> CRGO/Set(kg) </td>
+                    </tr>
+                    <tr>                       
+                        <td width="130" > @Model.DiNo      </td>
+                        <td width="130" > @Model.Rating </td>
+                        <td width="130" > @Model.Type     </td>
+                        <td width="180" > @Model.Cname   </td>
+                        <td width="130" > @Model.Qty       </td>
+                        <td width="130" > @Model.Crgo     </td>
+                    </tr>
+                    <tr><td class="EmptyLbl"><br /> </td></tr>                                 
+                    <tr>
+                        <th width="130">Conductor  </th>
+                        <td width="130"> @Model.Conductor</td>                    
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table style="background-color:teal">
+                                <tr> 
+                                    <th colspan="5"> <center>LV</center></th>
+                                </tr>
+                                <tr>
+                                    <td class="lbl"> Size </td>
+                                    <td class="lbl"> Covered Size </td>
+                                    <td class="lbl"> A </td>
+                                    <td class="lbl"> R </td>
+                                    <td class="lbl">Weight *</td>
+                                </tr>
+                                <tr>
+                                    <td width="75">@Model.LvSize</td>
+                                    <td width="90">@Model.LvCSize</td>
+                                    <td width="70">@Model.LvA</td>
+                                    <td width="70">@Model.LvR</td>
+                                    <td width="90">@Model.LvWeight</td>
+                                </tr>                               
+                            </table>
+                        </td>
+                        <td colspan="3">
+                            <table style="background-color:teal">
+                                <tr>
+                                    <th colspan="6"> <center>HV</center></th>
+                                </tr>
+                                <tr>
+                                    <td class="lbl"> Type </td>
+                                    <td class="lbl"> Size </td>
+                                    <td class="lbl"> Covered Size </td>
+                                    <td class="lbl"> A </td>
+                                    <td class="lbl"> R </td>
+                                    <td class="lbl">Weight </td>
+                                </tr>
+                                <tr>
+                                    <td width="75"> @Model.HvType</td>                           
+                                    <td width="75"> @Model.HvSize</td>
+                                    <td width="75"> @Model.HvCSize</td>
+                                    <td width="75"> @Model.HvA</td>
+                                    <td width="75"> @Model.HvR</td>
+                                    <td width="75"> @Model.HvWeight</td>
+                                </tr>                              
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td class="EmptyLbl"><br /> </td></tr> 
+                    <tr>
+                        <th width="130">Tap Changer</th>
+                        <td width="130">@Model.TapChanger</td>
+                        <td class="lbl"> Range</td>
+                        <td width="130">@Model.TcRange</td>
+                        <td class="lbl"> Rating</td>
+                        <td width="130">@Model.TcRating</td>                   
+                    </tr>
+                    <tr><td class="EmptyLbl"><br /> </td></tr> 
+                    <tr>
+                        <th width="130">Radiator Type</th>
+                        <td width="130">@Model.RadiatorType</td>                        
+                    </tr>
+                    <tr>
+                        <th colspan="2"><center> Radiator</center></th>
+                        <th colspan="2"><center> Panel 1</center></th>
+                        <th colspan="2"><center> Panel 2</center></th>     
+                    </tr>
+                    <tr>
+                        <td class="lbl"> Radiator Size </td>
+                        <td class="lbl"> Radiator Quantity</td>
+                        <td class="lbl"> Panel 1 Size </td>
+                        <td class="lbl"> Panel 1 Quantity</td>
+                        <td class="lbl"> Panel 2 Size </td>
+                        <td class="lbl"> Panel 2 Quantity</td>
+                    </tr>
+                    <tr>
+                        <td >@Model.RSize</td>
+                        <td >@Model.RQty</td>
+                        <td >@Model.p1Size</td>
+                        <td >@Model.p1Qty</td>
+                        <td >@Model.p2Size</td>
+                        <td >@Model.p2Qty</td>
+                    </tr>
+                    <tr>                        
+                        <td colspan="6" class="EmptyLbl">
+                            <center>@Html.ActionLink("Back To Designs", "Index")</center>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>

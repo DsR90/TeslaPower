@@ -1,0 +1,73 @@
+﻿@model TeslaPower.Models.Order
+@{
+    ViewBag.Title = "Edit Order";
+}
+<div class="Formlayout">
+    <h2>Po Details</h2>
+    <div style="background-color:teal; color:white;">
+        @using (Html.BeginForm("EditOrder", "Order"))
+        {
+            <table align="center">
+                <tr>
+                    <td colspan="6">
+                        @Html.ValidationSummary(false, "", new { @class = "alert-danger", style = "color:red" }, "h4")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="lbl" width="130"> Order To </td>
+                    <td>
+                        @Html.TextBoxFor(O => O.orderTo, new { @readonly=true, placeholder = "TTL / TP", style = "width:70px" })                       
+                    </td>
+                    <td class="lbl" width="50"> Po No </td>
+                    <td>
+                        @Html.TextBoxFor(O => O.poNo, new { @readonly = true, placeholder = "Po No", style = "width:100px" })
+                    </td>
+                    <td class="lbl" width="100"> Po No </td>
+                    <td width="100">
+                        @Html.TextBoxFor(O => O.poDate, new { @readonly = true, style = "width:100px" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lbl"> Customer Name</td>
+                    <td colspan="5">
+                        @Html.TextBoxFor(O => O.custName, new { @readonly = true, style = "width:510px" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lbl"> Region</td>
+                    <td colspan="2">
+                        @Html.TextBoxFor(O => O.region, new { @readonly = true, style = "width:130px" })
+                    </td>
+                    <td class="lbl"> Inspection</td>
+                    <td colspan="2">
+                        @Html.TextBoxFor(O => O.inspection, new { style = "width:250px" })
+                        @Html.ValidationMessageFor(O => O.inspection, null, new { @class = "errorSpans" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lbl"> Delivery Confirmation</td>
+                    <td colspan="2">
+                        @Html.DropDownListFor(O => O.delConfirm, new SelectList(Enum.GetValues(typeof(DelConfirm))), "Select", new { style = "width:130px" })
+                        @Html.ValidationMessageFor(O => O.delConfirm, null, new { @class = "errorSpans" })
+                    </td>
+                    <td class="lbl"> Delivery Date</td>
+                    <td colspan="2">
+                        @Html.EditorFor(O => O.delDate, new { style = "width:250px" })
+                        @Html.ValidationMessageFor(O => O.delDate, null, new { @class = "errorSpans" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lbl"> Remark</td>
+                    <td colspan="5">
+                        @Html.TextBoxFor(O => O.remark, new { style = "width:510px" })
+                        @Html.ValidationMessageFor(O => O.remark, null, new { @class = "errorSpans" })
+                    </td>
+                </tr>                
+            </table>
+            <div align="center">             
+               <input type="submit" value="Save"/>              
+            </div>
+        }
+    </div>
+</div>
